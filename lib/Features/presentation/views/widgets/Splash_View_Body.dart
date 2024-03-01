@@ -1,8 +1,35 @@
+import 'package:ecommerce_get/Features/presentation/views/widgets/slidingtext.dart';
 import 'package:ecommerce_get/constants.dart';
 import 'package:flutter/material.dart';
 
-class SplshViewBody extends StatelessWidget {
+class SplshViewBody extends StatefulWidget {
   const SplshViewBody({super.key});
+
+  @override
+  State<SplshViewBody> createState() => _SplshViewBodyState();
+}
+
+class _SplshViewBodyState extends State<SplshViewBody>
+    with SingleTickerProviderStateMixin {
+  late AnimationController animationController; // from 0 To 1
+  late Animation<Offset> slidingAnimation; //object to make range out of 1 and 0
+  @override
+  void initState() {
+    super.initState();
+    animationController =
+        AnimationController(vsync: this, duration: const Duration(seconds: 3));
+    slidingAnimation =
+        Tween<Offset>(begin: const Offset(0, 8), end: Offset.zero)
+            .animate(animationController);
+
+    animationController.forward();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    animationController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +41,7 @@ class SplshViewBody extends StatelessWidget {
         const SizedBox(
           height: 15,
         ),
-        const Text(
-          textAlign: TextAlign.center,
-          'Read free Books',
-        ),
+        SlidingText(slidingAnimation: slidingAnimation),
       ],
     );
   }
