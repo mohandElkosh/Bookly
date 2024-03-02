@@ -56,7 +56,8 @@ class _SplshViewBodyState extends State<SplshViewBody>
 
   void navigateToHome() {
     Future.delayed(const Duration(seconds: 3), () {
-      Get.to(const HomeView(), transition: Transition.leftToRightWithFade);
+      Get.to(() => const HomeView(),
+          transition: Transition.leftToRightWithFade);
     });
   }
 }
