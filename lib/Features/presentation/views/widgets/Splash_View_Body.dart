@@ -1,8 +1,8 @@
 import 'package:ecommerce_get/Features/home/presentation/views/home.dart';
 import 'package:ecommerce_get/Features/presentation/views/widgets/slidingtext.dart';
-import 'package:ecommerce_get/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 
 class SplshViewBody extends StatefulWidget {
   const SplshViewBody({super.key});
@@ -35,7 +35,8 @@ class _SplshViewBodyState extends State<SplshViewBody>
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Image.asset(kLogo1),
+        Lottie.asset('assets/images/books.json',
+            height: 400, width: 200, fit: BoxFit.fill),
         const SizedBox(
           height: 15,
         ),
@@ -55,7 +56,7 @@ class _SplshViewBodyState extends State<SplshViewBody>
   }
 
   void navigateToHome() {
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 5), () {
       Get.to(() => const HomeView(),
           transition: Transition.leftToRightWithFade);
     });
