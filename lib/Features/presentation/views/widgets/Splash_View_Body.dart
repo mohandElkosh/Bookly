@@ -1,7 +1,6 @@
-import 'package:ecommerce_get/Features/home/presentation/views/home.dart';
 import 'package:ecommerce_get/Features/presentation/views/widgets/slidingtext.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 
 class SplshViewBody extends StatefulWidget {
@@ -56,9 +55,14 @@ class _SplshViewBodyState extends State<SplshViewBody>
   }
 
   void navigateToHome() {
-    Future.delayed(const Duration(seconds: 5), () {
-      Get.to(() => const HomeView(),
-          transition: Transition.leftToRightWithFade);
-    });
+    Future.delayed(
+      const Duration(seconds: 5),
+      () {
+        // Get.to(() => const HomeView(),
+        //     transition: Transition.leftToRightWithFade);
+
+        GoRouter.of(context).push('/homeview');
+      },
+    );
   }
 }
