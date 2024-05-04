@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:ecommerce_get/Core/errors/failures.dart';
 import 'package:ecommerce_get/Core/utils/api_services.dart';
 import 'package:ecommerce_get/Features/home/data/models/book_model/book_model.dart';
@@ -20,8 +21,11 @@ class HomeRepoImpl implements HomeRepo {
         books.add(BookModel.fromJson(item));
       }
       return right(books);
-    } on Exception catch (e) {
-      return left(ServerFailure());
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.DioException(e));
+      }
+      return left(ServerFailure(errMessage: 'Oops! Something went wrong'));
     }
   }
 
