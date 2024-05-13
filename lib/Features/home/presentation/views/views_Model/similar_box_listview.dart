@@ -1,5 +1,7 @@
-import 'package:ecommerce_get/Features/home/presentation/views/views_Model/custom_book_item.dart';
+import 'package:ecommerce_get/Features/home/presentation/views/views_Model/custom_book_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class SimilarBoxListView extends StatelessWidget {
   const SimilarBoxListView({super.key});
@@ -11,7 +13,9 @@ class SimilarBoxListView extends StatelessWidget {
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
-            return const CustomBookImage();
+            return CustomBookImage(
+              imageUrl: 'https://picsum.photos/250?image=$index',
+            );
           }),
     );
   }

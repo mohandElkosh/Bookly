@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => FeaturedBooksCubit(
             getIt.get<HomeRepoImpl>(),
-          ),
+          )..featchFuturedBooks(),
         ),
         BlocProvider(
           create: (context) => NewestBooksCubit(
